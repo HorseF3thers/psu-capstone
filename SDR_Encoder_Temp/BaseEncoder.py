@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
-
+from SDR import SDR
+from typing import List
 
 class BaseEncoder(ABC):
 
-    def __init__(self, dimensions=None):
-        self._dimensions = None
-        self.size = None
+    def __init__(self, dimensions: List[int] = None):
+        self._dimensions: List[int] = []
+        self._size: int = 0
 
         if dimensions is not None:
             self.initialize(dimensions)
@@ -14,16 +15,16 @@ class BaseEncoder(ABC):
      # This is the total number of bits in the result.
      #
     @property
-    def dimensions(self):
+    def dimensions(self) -> List[int]:
         return self._dimensions
 
     @property
-    def size(self):
-        return self.size
+    def size(self) -> int:
+        return self._size
 
-    def initialize(self, dimensions):
+    def initialize(self, dimensions: List[int]):
         self._dimensions = list(dimensions)
-        #self.size = SDR(dimensions).size
+        self._size = SDR(dimensions).size
 
     def reset(self):
         pass
