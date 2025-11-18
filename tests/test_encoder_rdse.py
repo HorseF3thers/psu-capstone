@@ -1,7 +1,5 @@
 """Test suite for the RDSE."""
 
-import io
-
 import pytest
 
 from psu_capstone.encoder_layer.rdse import RandomDistributedScalarEncoder, RDSEParameters
